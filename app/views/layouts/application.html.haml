@@ -8,6 +8,32 @@
   %body
     .container
       %ul.nav.nav-tabs
-        %li= link_to "Home", welcome_index_path
-        %li= link_to "About", welcome_about_path
+        %li= link_to "Home", root_path
+        %li= link_to "About", about_path
+        %li= link_to "Applicant LinkedIn Sign In",  applicant_omniauth_authorize_path(:linkedin)
+      %ul.nav.nav-tabs
+      / .pull-right.user-info
+      /   - if current_user
+      /     Hello #{current_user.email}! #{link_to "Sign out", destroy_user_session_path, method: :delete}
+      /   - elsif
+      /     = link_to "Applicant Sign in", new_applicant_session_path
+      /     or
+      /     \#{link_to "Applicant Sign up", new_applicant_registration_path}
+      /   - else
+      /     = link_to "Employer Sign in", new_employer_session_path
+      /     or
+      /     \#{link_to "Employer Sign up", new_employer_registration_path}
+
+      / - if flash[:notice]
+      /   .alert.alert-success
+      /     %button.close{"data-dismiss" => "alert", :type => "button"} ×
+      /     = flash[:notice]
+      / - elsif flash[:error]
+      /   .alert.alert-danger
+      /     %button.close{"data-dismiss" => "alert", :type => "button"} ×
+      /     = flash[:error]
+      / - elsif flash[:alert]
+      /   .alert.alert-warning
+      /     %button.close{"data-dismiss" => "alert", :type => "button"} ×
+      /     = flash[:alert]
     = yield

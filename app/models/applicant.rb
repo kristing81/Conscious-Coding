@@ -1,9 +1,9 @@
 class Applicant
   include Mongoid::Document
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, :timeoutable and 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -33,4 +33,35 @@ class Applicant
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
+
+  def self.from_omniauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_create do |applicant|
+      applicant.provider = auth.provider
+      applicant.uid = auth.uid
+      applicant.username = auth.info.nickname
+    end
+  end
+
+  def self.new_with_session(params, session)
+    if session["devise.applicant_attributes"]
+      new(session["devise.applicant_attributes"], without_protection: true) do |applicant|
+        applicant.attributes = params
+        applicant.valid?
+      end
+    else
+      super
+    end
+  end
+
+  def password_required?
+    super && provider.blank?
+  end
+
+  def update_with_password(params, *options)
+    if encrypted_password.blank?
+      update_attributes(params, *options)
+    else
+      super
+    end
+  end
 end
