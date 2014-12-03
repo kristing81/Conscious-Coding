@@ -1,13 +1,14 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  def all
-    applicant = applicant.from_omniauth(request.env["omniauth.auth"])
-    if applicant.persisted?
-      flash.notice = "Signed in!"
-      sign_in_and_redirect applicant
+
+  def linkedin
+    @applicant = Applicant.find_for_linkedin_oauth(request.env["omniauth.auth"])
+    if @applicant.persisted?
+      redirect_to root_path, :event => :authentication
     else
-      session["devise.applicant_attributes"] = applicant.attributes
-      redirect_to new_applicant_registration_url
+      session["devise.linkedin_data"] = request.env["omniauth.auth"]
+      redirect_to root_path
     end
   end
-  alias_method :linkedin, :all
 end
+
+

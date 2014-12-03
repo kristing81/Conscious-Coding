@@ -1,39 +1,67 @@
 !!!
 %html
   %head
-    %title ConsciousCoding
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = csrf_meta_tags
-  %body
-    .container
-      %ul.nav.nav-tabs
-        %li= link_to "Home", root_path
-        %li= link_to "About", about_path
-        %li= link_to "Applicant LinkedIn Sign In",  applicant_omniauth_authorize_path(:linkedin)
-      %ul.nav.nav-tabs
-      / .pull-right.user-info
-      /   - if current_user
-      /     Hello #{current_user.email}! #{link_to "Sign out", destroy_user_session_path, method: :delete}
-      /   - elsif
-      /     = link_to "Applicant Sign in", new_applicant_session_path
-      /     or
-      /     \#{link_to "Applicant Sign up", new_applicant_registration_path}
-      /   - else
-      /     = link_to "Employer Sign in", new_employer_session_path
-      /     or
-      /     \#{link_to "Employer Sign up", new_employer_registration_path}
+  / %script{:src => "http://platform.linkedin.com/in.js", :type => "text/javascript"}
+  / :cdata
+  /   api_key: 75p0z4or7kkkrh
+  / :javascript
+  / function onLinkedInLoad() {
+  /     IN.UI.Authorize().place();      
+  /     IN.Event.on(IN, "auth", function () { onLogin(); });
+  /     IN.Event.on(IN, "logout", function () { onLogout(); });
+  / }
 
-      / - if flash[:notice]
-      /   .alert.alert-success
-      /     %button.close{"data-dismiss" => "alert", :type => "button"} ×
-      /     = flash[:notice]
-      / - elsif flash[:error]
-      /   .alert.alert-danger
-      /     %button.close{"data-dismiss" => "alert", :type => "button"} ×
-      /     = flash[:error]
-      / - elsif flash[:alert]
-      /   .alert.alert-warning
-      /     %button.close{"data-dismiss" => "alert", :type => "button"} ×
-      /     = flash[:alert]
+  / function onLogin() {
+  /         IN.API.Profile("me").result(displayResult);
+  / }  
+  / function displayResult(profiles) {
+  /     member = profiles.values[0];
+  /     alert(member.id + " Hello " +  member.firstName + " " + member.lastName);
+  / }
+  %title ConsciousCoding
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
+  %body.container
+    %nav.navbar-default.navbar-fixed-top
+      %button.navbar-toggle{type: "button", "data-toggle" => "collapse", "data-target" => ".navbar-collapse"}
+        %span.sr-only
+          | Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+        .collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li.header= link_to "Conscious Coding", root_path
+      %ul.nav.navbar-nav.pull-right
+        %li= link_to "About", about_path
+        %li= link_to "All Jobs", jobs_path
+        %li
+          //%input{:onclick => "onLinkedInLoad()", :type => "button", :value => "Sign in using LinkedIn account"}/
+        %li= link_to "Applicant Login",  applicant_omniauth_authorize_path(:linkedin)
+        %li= link_to "Employer Login", new_employer_registration_path
+
+
+      - if flash[:notice]
+        .alert.alert-success
+          %button.close{"data-dismiss" => "alert", :type => "button"} ×
+          = flash[:notice]
+      - elsif flash[:error]
+        .alert.alert-danger
+          %button.close{"data-dismiss" => "alert", :type => "button"} ×
+          = flash[:error]
+      - elsif flash[:alert]
+        .alert.alert-warning
+          %button.close{"data-dismiss" => "alert", :type => "button"} ×
+          = flash[:alert]
     = yield
+
+    / %script{:src => "//platform.linkedin.com/in.js", :type => "text/javascript"}
+    / :cdata
+    /   api_key: 75p0z4or7kkkrh
+    /   authorize: true
+    /   lang:  es_ES
+    / %script{:type => "in/Login"}
+    / :cdata
+    /   Hello, <?js= firstName ?> <?js= lastName ?>.
+   

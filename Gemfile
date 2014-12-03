@@ -34,8 +34,8 @@ gem 'haml-rails'
 gem 'figaro'
 
 gem 'linkedin'
-
 gem 'omniauth-linkedin'
+gem 'omniauth-linkedin-oauth2'
 
 gem 'stripe'
 
@@ -46,6 +46,8 @@ gem 'kaminari'
 gem 'mongoid'
 
 gem 'bson_ext'
+
+gem 'httparty', '~> 0.13.3'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

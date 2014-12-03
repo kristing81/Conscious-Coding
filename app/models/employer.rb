@@ -1,5 +1,6 @@
 class Employer
   include Mongoid::Document
+  include Mongoid::Timestamps
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -33,4 +34,11 @@ class Employer
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
+
+  field :employer_type,   type: Array
+  field :company_name,   type: String
+  field :description,   type: String
+  field :active_posting,   type: Boolean
+
+  embeds_many :jobs
 end

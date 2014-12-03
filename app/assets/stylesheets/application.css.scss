@@ -13,8 +13,12 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap";
+ @import "spacelab";
 
-.nav {
-   margin-top: 5px;
+body{
+   padding-top: 70px;
  }
+li.header {
+  font-size: 2em;
+}
+

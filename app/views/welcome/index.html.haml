@@ -1,2 +1,27 @@
-%h1 Welcome#index
-%p Find me in app/views/welcome/index.html.haml
+%h1 Welcome to Conscious Coding
+%p Are you ready to program with a purpose?
+
+
+%form 
+%a{:role => "search"}
+.form-group
+  %input.form-control{:placeholder => "Search for jobs", :type => "text"}/
+  %br
+  %button.btn.btn-default.btn-sm{:type => "submit"} Submit
+
+
+
+/ %form{:action=>'http://www.indeed.com/jobs', :method=>'get'}
+/   %input{:type=>"hidden", :name=>"indpubnum", :value=>"5153643017932788"}   
+/   %table{:cellspacing => "0", :style => "font-family:arial"}
+/     %tr
+/       %td{:style => "font-size:16px;color:#F60"}
+/         %b Job Search
+/     %tr
+/       %td
+/         %input{:name => "q", :size => "25", :value => ""}/
+/       %td
+/         %input{:type => "submit", :value => "Find Jobs"}/
+/       %td{:style => "font-size:10px", :valign => "top"} job title, keywords, company, location
+/       %td{:colspan => "1", :style => "font-size:13px;", :valign => "top"}
+        
