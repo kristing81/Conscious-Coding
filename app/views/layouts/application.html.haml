@@ -1,29 +1,12 @@
 !!!
 %html
   %head
-  / %script{:src => "http://platform.linkedin.com/in.js", :type => "text/javascript"}
-  / :cdata
-  /   api_key: 75p0z4or7kkkrh
-  / :javascript
-  / function onLinkedInLoad() {
-  /     IN.UI.Authorize().place();      
-  /     IN.Event.on(IN, "auth", function () { onLogin(); });
-  /     IN.Event.on(IN, "logout", function () { onLogout(); });
-  / }
-
-  / function onLogin() {
-  /         IN.API.Profile("me").result(displayResult);
-  / }  
-  / function displayResult(profiles) {
-  /     member = profiles.values[0];
-  /     alert(member.id + " Hello " +  member.firstName + " " + member.lastName);
-  / }
   %title ConsciousCoding
-  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = stylesheet_link_tag    'application', media: 'all'#, 'data-turbolinks-track' => true
+  = javascript_include_tag 'application'#, 'data-turbolinks-track' => true
   = csrf_meta_tags
   %body.container
-    %nav.navbar-default.navbar-fixed-top
+    %nav.navbar-inverse.navbar-fixed-top
       %button.navbar-toggle{type: "button", "data-toggle" => "collapse", "data-target" => ".navbar-collapse"}
         %span.sr-only
           | Toggle navigation
@@ -33,14 +16,18 @@
         .collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li.header= link_to "Conscious Coding", root_path
-      %ul.nav.navbar-nav.pull-right
+      %ul.nav.navbar-nav.navbar-right
         %li= link_to "About", about_path
-        %li= link_to "All Jobs", jobs_path
-        %li
-          //%input{:onclick => "onLinkedInLoad()", :type => "button", :value => "Sign in using LinkedIn account"}/
+        %li.dropdown{role: "presentation"}
+          %a.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", href: "#", :role => "button"}
+            Jobs by Category
+            %span.caret
+          %ul.dropdown-menu{role: "menu"}
+            - Category.all.each do |cat|
+              %li= link_to cat.name, jobs_by_category_url(category_name: cat)
+        %li= link_to "Post a Job", new_job_path
         %li= link_to "Applicant Login",  applicant_omniauth_authorize_path(:linkedin)
         %li= link_to "Employer Login", new_employer_registration_path
-
 
       - if flash[:notice]
         .alert.alert-success
@@ -54,6 +41,7 @@
         .alert.alert-warning
           %button.close{"data-dismiss" => "alert", :type => "button"} ×
           = flash[:alert]
+    .container
     = yield
 
     / %script{:src => "//platform.linkedin.com/in.js", :type => "text/javascript"}

@@ -11,14 +11,29 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require font-awesome
+ *= require select2
+ *= require select2-bootstrap
  *= require_self
  */
- @import "spacelab";
+@import "bootstrap-sprockets";
+@import "spacelab";
 
 body{
    padding-top: 70px;
+    /*height: 100%;
+    background: -webkit-linear-gradient(90deg, #668594 10%, #B2D1E0 90%);
+    background:    -moz-linear-gradient(90deg, #668594 10%, #B2D1E0 90%);
+    background:     -ms-linear-gradient(90deg, #668594 10%, #B2D1E0 90%);
+    background:      -o-linear-gradient(90deg, #668594 10%, #B2D1E0 90%);
+    background:         linear-gradient(90deg, #668594 10%, #B2D1E0 90%);
+    font-family: 'Lato', sans-serif;*/
  }
 li.header {
   font-size: 2em;
+}
+
+.navbar-inverse {
+  background-color: #00334C;
 }
 

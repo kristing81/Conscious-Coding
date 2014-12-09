@@ -1,3 +1,6 @@
 %h1 Jobs#index
 %p Find me in app/views/jobs/index.html.haml
-%a{:href => "http://www.indeed.com/jobs?indpubnum=5153643017932788"} Search for jobs
+
+%p
+- @jobs.each do |job|
+  job

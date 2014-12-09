@@ -44,14 +44,13 @@ class ApplicantsController < ApplicationController
   end
   
   private
-    def set_user
-      @applicant = applicant.find(params[:id])
-    end
+  def set_user
+    @applicant = applicant.find(params[:id])
+  end
 
-    def applicant_params
-      accessible = [ :name, :email, :access_toke, :secret ] # extend with your own params
-      accessible << [ :password, :password_confirmation ] unless params[:applicant][:password].blank?
-      params.require(:applicant).permit(accessible)
-    end
+  def applicant_params
+    accessible = [ :name, :email, :access_toke, :secret ] # extend with your own params
+    accessible << [ :password, :password_confirmation ] unless params[:applicant][:password].blank?
+    params.require(:applicant).permit(accessible)
   end
 end

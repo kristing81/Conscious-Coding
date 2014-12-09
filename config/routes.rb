@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :jobs
 
+  get "opportunities/:category_name" => "jobs#index", as: :jobs_by_category
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

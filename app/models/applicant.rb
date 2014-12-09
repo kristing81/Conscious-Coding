@@ -40,12 +40,12 @@ class Applicant
   field :skills,   type: Array
   field :access_token, type: String
   field :secret, type: String
+  field :provider_name, type: String
+  field :provider_uid, type: String
 
   def self.find_for_linkedin_oauth(auth)
    puts auth.info 
-   where(auth.slice(:provider, :id)).first_or_create do |applicant|
-      applicant.provider = auth.provider
-      applicant.id = auth.id
+   where(provider_name: auth.provider, provider_uid: auth.uid).first_or_create do |applicant|
       applicant.email = auth.info.email
       applicant.password = Devise.friendly_token[0,20]
       applicant.first_name = auth.info.first_name  
@@ -54,7 +54,7 @@ class Applicant
   end
 
   def self.create_with_omniauth(auth)
-    create(id: auth['id'], provider: auth['provider'])
+    create(uid: auth['uid'], provider: auth['provider'])
   end
 
 end
