@@ -5,30 +5,38 @@
   = stylesheet_link_tag    'application', media: 'all'#, 'data-turbolinks-track' => true
   = javascript_include_tag 'application'#, 'data-turbolinks-track' => true
   = csrf_meta_tags
-  %body.container
-    %nav.navbar-inverse.navbar-fixed-top
-      %button.navbar-toggle{type: "button", "data-toggle" => "collapse", "data-target" => ".navbar-collapse"}
-        %span.sr-only
-          | Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-        .collapse.navbar-collapse
-      %ul.nav.navbar-nav
-        %li.header= link_to "Conscious Coding", root_path
-      %ul.nav.navbar-nav.navbar-right
-        %li= link_to "About", about_path
-        %li.dropdown{role: "presentation"}
-          %a.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", href: "#", :role => "button"}
-            Jobs by Category
-            %span.caret
-          %ul.dropdown-menu{role: "menu"}
-            - Category.all.each do |cat|
-              %li= link_to cat.name, jobs_by_category_url(category_name: cat)
-        %li= link_to "Post a Job", new_job_path
-        %li= link_to "Applicant Login",  applicant_omniauth_authorize_path(:linkedin)
-        %li= link_to "Employer Login", new_employer_registration_path
-
+  %body
+    .container
+      .row
+        %nav.navbar-inverse.navbar-fixed-top{role: "navigation"}
+          .navbar-header
+            %button.navbar-toggle{type: "button", "data-toggle" => "collapse", "data-target" => "#collapse"}
+              %span.sr-only Toggle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            .collapse.navbar-collapse#collapse
+              %ul.nav.navbar-nav
+                %li.header= link_to "Conscious Coding", root_path
+              %ul.nav.navbar-nav.navbar-right
+                %li= link_to "About", about_path
+                %li.dropdown{role: "presentation"}
+                  %a.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", href: "#", :role => "button"}
+                    Jobs by Category
+                    %span.caret
+                  %ul.dropdown-menu{role: "menu"}
+                    - Category.all.each do |cat|
+                      %li= link_to cat.name, jobs_by_category_url(category_name: cat)
+                %li= link_to "Post a Job", new_job_path
+                %li= link_to "Applicant Login",  applicant_omniauth_authorize_path(:linkedin)
+                %li= link_to "Employer Login", new_employer_registration_path
+              .col-sm-3.col-md-3.pull-right
+                %form.navbar-form{:role => "search"}
+                .input-group
+                  %input#srch-term.form-control{:name => "srch-term", :placeholder => "Search jobs", :type => "text"}/
+                  .input-group-btn
+                    %button#search-button.btn.btn-default{:type => "submit"}
+                      %i.glyphicon.glyphicon-search
       - if flash[:notice]
         .alert.alert-success
           %button.close{"data-dismiss" => "alert", :type => "button"} ×
@@ -41,15 +49,15 @@
         .alert.alert-warning
           %button.close{"data-dismiss" => "alert", :type => "button"} ×
           = flash[:alert]
-    .container
+    
     = yield
+    %footer 
+      .container
+        .row.col-footer.col-md-3.col-md-offset-1
+          %h4.footer Navigate
+        .row.col-footer.col-md-3.col-md-offset-1
+          %h4.footer Contact
+        .row.col-footer.col-md-3.col-md-offset-1            
+          %h4.footer More Info
 
-    / %script{:src => "//platform.linkedin.com/in.js", :type => "text/javascript"}
-    / :cdata
-    /   api_key: 75p0z4or7kkkrh
-    /   authorize: true
-    /   lang:  es_ES
-    / %script{:type => "in/Login"}
-    / :cdata
-    /   Hello, <?js= firstName ?> <?js= lastName ?>.
-   
+      .copyright © Conscious Coding

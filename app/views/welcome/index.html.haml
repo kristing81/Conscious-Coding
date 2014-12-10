@@ -1,25 +1,14 @@
-%container
-%row
-%h1 Welcome to Conscious Coding
+.container
+  .row.col-md-8
+    %h1 Welcome to Conscious Coding
 
-%p Are you ready to program with a purpose?
+    %p Are you ready to program with a purpose?
+  .row.col-md-4
+    .input-group
+    / =simple_form_for :search, url: search_path(:search), :method => :get  do |f|
+    / =f.input :search
+    / =f.submit "Search"
+
+ 
 
 
-- if current_applicant
-  .alert.alert-success
-    Hurray!
-- else
-  not logged in.
-%container
-  %row.col-md-8.input-group
-    %input.form-control{:placeholder => "Search for jobs", :type => "text", class: "fa fa-search"}/
-    %br
-    %button.btn.btn-default.btn-sm{:type => "submit"} Submit
-    %i.fa.fa-search
-
-/ -@jobs.each do |job|
-/   %h2= link_to job.title, job
-/   %p= job.title
-
-/   = link_to "New Job", new_job_path
-        

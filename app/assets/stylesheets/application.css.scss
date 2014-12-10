@@ -17,10 +17,12 @@
  *= require_self
  */
 @import "bootstrap-sprockets";
+@import "bootstrap"; 
 @import "spacelab";
 
 body{
    padding-top: 70px;
+   font-family: 'Lato', sans-serif;
     /*height: 100%;
     background: -webkit-linear-gradient(90deg, #668594 10%, #B2D1E0 90%);
     background:    -moz-linear-gradient(90deg, #668594 10%, #B2D1E0 90%);
@@ -28,12 +30,51 @@ body{
     background:      -o-linear-gradient(90deg, #668594 10%, #B2D1E0 90%);
     background:         linear-gradient(90deg, #668594 10%, #B2D1E0 90%);
     font-family: 'Lato', sans-serif;*/
+
  }
+ .container {
+   /*border-bottom: 1px dotted #7C7C7C;*/
+ }
+
 li.header {
   font-size: 2em;
 }
 
 .navbar-inverse {
   background-color: #00334C;
+  padding-right: 10px;
+
+}
+a.select2-choice, .select2-drop-mask, #select2-drop-mask, .select2-search {
+   width: inherit;
+}
+#srch-term {
+  height:30px;
+  padding: 10px;
 }
 
+#search-button {
+  height:30px;
+}
+
+footer {
+  height: 200px;
+  position: relative;
+  margin-top: 100px;
+}
+
+h4.footer {
+  font-size: 1.3em;
+  border-bottom: 1px dotted #7C7C7C;
+  padding: 5px;
+  text-align: center;
+}
+
+.copyright {
+  font-size: .85em;
+  color: inherit;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position:absolute;
+}

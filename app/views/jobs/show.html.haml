@@ -1,7 +1,17 @@
-%h1= @job.title
-%p= @job.description
-%p= @job.company
-%button.btn.btn-default=link_to "Apply for Job", @job.url
+%body
+  .container
+    .row
+      .col-md-8.margin-top-1
+        %h1= @job.title
+        %p= @job.description
+        %p= @job.company
+        %p= @job.category
+        %p= @job.job_type
+        %p= @job.location
+        %p= @job.created_on, "Posted On"
+        %p= @job.skills
+        
+        %button.btn.btn-default=link_to "Apply for Job", @job.url
 
 = link_to "Back", root_path, class: "btn btn-sm btn-default"
 = link_to "Edit", edit_job_path(@job), class: "btn btn-sm btn-default"

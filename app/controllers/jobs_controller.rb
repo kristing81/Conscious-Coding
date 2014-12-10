@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
 
-  before_filter :find_job, except: [:index]
+  before_filter :find_job, except: [:index, :new, :create]
   
   # def index
   #   @jobs = HTTParty.get(" http://api.indeed.com/ads/apisearch?publisher=5153643017932788&q=java&l=austin%2C+tx&sort=&radius=&st=&jt=&start=&limit=&fromage=&filter=&latlong=1&co=us&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2")
@@ -10,6 +10,7 @@ class JobsController < ApplicationController
   # end
 
   def index
+    @jobs = Job.search(params[:search])
     if params[:category_name].blank?
       @jobs = Job.all.newest_first
     else
@@ -23,6 +24,8 @@ class JobsController < ApplicationController
   end
 
   def create
+    @job = params[:job][:skills].split(',').reject(&:blank?).collect!
+    #@job[:skills] = params[:job][:skills].split(',').reject(&:blank?).collect!
     @job = Job.new(job_params)
     if @job.save
       redirect_to @job
@@ -49,11 +52,14 @@ class JobsController < ApplicationController
     @job.destroy
     redirect_to root_path
   end
+  def search
+   @search = params[:search][:q]
+  end
 
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :category_id, :job_type, :location, :posted_on, :skills)
+    params.require(:job).permit(:title, :description, :category_id, :job_type, :location, :posted_on, skills:[])
   end
 
   def find_job

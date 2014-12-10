@@ -1,6 +1,11 @@
-.container
-  .row
-    .col-md-8.margin-top-1
-      %h1 Edit Job
-      = render 'form'
-      = link_to 'Back', root_path
+%head
+  %script{:src => "jobs.js"}
+  :javascript
+    $( document ).ready(function());
+%body
+  .container
+    .row
+      .col-md-8.margin-top-1
+        %h1 Post New Job
+        = render 'form'
+        = link_to 'Back', root_path
