@@ -26,7 +26,8 @@
                     %span.caret
                   %ul.dropdown-menu{role: "menu"}
                     - Category.all.each do |cat|
-                      %li= link_to cat.name, jobs_by_category_url(category_name: cat)
+                      %li= link_to cat.name, category_path(cat)#jobs_by_category_url(category_name: cat) #categories_path(category_name: cat)
+                %li= link_to "All Jobs", jobs_path      
                 %li= link_to "Post a Job", new_job_path
                 %li= link_to "Applicant Login",  applicant_omniauth_authorize_path(:linkedin)
                 %li= link_to "Employer Login", new_employer_registration_path
@@ -51,13 +52,13 @@
           = flash[:alert]
     
     = yield
-    %footer 
-      .container
-        .row.col-footer.col-md-3.col-md-offset-1
-          %h4.footer Navigate
-        .row.col-footer.col-md-3.col-md-offset-1
-          %h4.footer Contact
-        .row.col-footer.col-md-3.col-md-offset-1            
-          %h4.footer More Info
+    / %footer 
+    /   .container
+    /     .row.col-footer.col-md-3.col-md-offset-1
+    /       %h4.footer Navigate
+    /     .row.col-footer.col-md-3.col-md-offset-1
+    /       %h4.footer Contact
+    /     .row.col-footer.col-md-3.col-md-offset-1            
+    /       %h4.footer More Info
 
-      .copyright © Conscious Coding
+    /   .copyright © Conscious Coding

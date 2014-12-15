@@ -1,0 +1,13 @@
+%h1 Categories
+.row
+  .col-md-8
+    - @categories.each do |topic|
+    .media
+      .media-body
+        %h4.media-heading
+          = link_to category.name, category
+         
+  .col-md-4
+  
+    = link_to "New Topic", edit_category_path, class: 'btn btn-success'
+    = link_to "Delete Topic", @category, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' }

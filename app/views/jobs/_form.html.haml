@@ -1,9 +1,9 @@
-= simple_form_for(@job, html: { class: 'form-horizontal'}) do |f|
+= simple_form_for [@category, @job] html: { class: 'form-horizontal'} do |f|
       = f.collection_select :category_id, Category.all, :id, :name, input_html: {class: "form-control", id: 'job_category_id'}
       = f.input :title, label: "Job Title", input_html: { class: "form-control" }
       = f.input :description, as: :text, label: "Job Description", input_html: { class: "form-control" }
       = f.collection_select :job_type_id, JobType.all, :id, :name, label: "Job Type", input_html: {class: "form-control", id: 'job_job_type_id'}
-      = f.input :skills, label: "Skills",  multiple: 'multiple', input_html: { class: "form-control" }
+      = f.input :raw_skills, label: "Skills", input_html: { class: "form-control" }
       = f.input :company, label: "Your Company", input_html: { class: "form-control" }
       = f.input :location, label: "Location", input_html: { class: "form-control" }
       = f.input :url, label: "Link to Job", input_html: { class: "form-control" }

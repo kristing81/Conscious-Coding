@@ -1,6 +1,3 @@
-%h1 Jobs#index
-%p Find me in app/views/jobs/index.html.haml
-
-%p
-- @jobs.each do |job|
-  job
+%h1 Jobs
+- @jobs.each do |job| 
+  %p= link_to job.title, [@category, job]

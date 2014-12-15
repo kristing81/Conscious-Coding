@@ -3,5 +3,5 @@ $(function() {
 });
 
 $(function() {
-  $("#job_skills").select2({tags:[]})
+  $("#job_raw_skills").select2({tags:[]})
 });

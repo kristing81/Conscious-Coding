@@ -1,7 +1,7 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def linkedin
-    asd
+  
     @applicant = Applicant.find_for_linkedin_oauth(request.env["omniauth.auth"])
     
     if @applicant.present?
