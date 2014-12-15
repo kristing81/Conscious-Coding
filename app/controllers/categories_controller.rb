@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
+    @category = Category.where(slug: params[:id]).first
     @jobs = @category.jobs
   end
 
@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.create(params(:id))
+    @category = Category.new(params.require(:name))
   end
 
   def edit
@@ -32,6 +32,6 @@ class CategoriesController < ApplicationController
 
   def destroy
      @category = Category.find(params[:id]).destroy
-     redirect_to jobs_aoth
+     redirect_to root_path
   end
 end

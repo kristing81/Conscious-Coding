@@ -5,11 +5,9 @@ Rails.application.routes.draw do
 
   resources :jobs, only: [:index, :new, :create]
 
-  resources :categories do
-    resources :jobs, except: [:index, :new, :create]
-  end
+  resources :categories
   
-  get "/:category_name" => "category#show", as: :jobs_by_category
+  get "/:categories/:category_id" => "category#show"#, as: :jobs_by_category
   #get "/:category_name" => "jobs#index", as: :jobs_by_category
   #get "opportunities/:category_name" => "jobs#index", as: :jobs_by_category
   root 'welcome#index'

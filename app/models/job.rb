@@ -23,10 +23,6 @@ class Job
 
   validates_presence_of :title
 
-   # include HTTParty
-   # format :json
-   # base_uri 'http://api.indeed.com'
-
   def raw_skills
     self.skills.join(",")
   end
@@ -34,6 +30,24 @@ class Job
   def raw_skills=(skill_string)
     self.skills = skill_string.split(",")
   end
+
+  # def search
+  #   @search = params[:search]
+  # end
+
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
+
+
+   # include HTTParty
+   # format :json
+   # base_uri 'http://api.indeed.com'
+
 
   # def get_jobs
   #   jobs = HTTParty.get(" http://api.indeed.com/ads/apisearch?publisher=5153643017932788
@@ -58,16 +72,6 @@ class Job
   #   ")
   # end
 
-  # def search
-  #   @search = params[:search][:q]
-  # end
 
-  # def self.search(search)
-  #   if search
-  #     find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
-  #   else
-  #     find(:all)
-  #   end
-  # end
 
 end

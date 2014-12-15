@@ -50,8 +50,8 @@
         .alert.alert-warning
           %button.close{"data-dismiss" => "alert", :type => "button"} ×
           = flash[:alert]
-    
-    = yield
+    .container
+      = yield
     / %footer 
     /   .container
     /     .row.col-footer.col-md-3.col-md-offset-1

@@ -48,7 +48,6 @@ gem 'kaminari'
 
 gem 'mongoid'
 
-
 gem 'bson_ext'
 
 gem 'httparty', '~> 0.13.3'

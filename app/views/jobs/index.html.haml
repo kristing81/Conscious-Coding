@@ -1,3 +1,9 @@
-%h1 Jobs
-- @jobs.each do |job| 
-  %p= link_to job.title, [@category, job]
+.container
+  .row
+    .col-md-8
+      %h1 Jobs
+      / =simple_form_for :search, :method => :get  do |f|
+      /   =f.input :search
+      /   =f.submit "Search"
+      - @jobs.each do |job| 
+        %p= link_to job.title#, [category, job]

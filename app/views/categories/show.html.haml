@@ -1,12 +1,10 @@
-%h1= @category.name
+.row
+  .page-header
+    %h1= @category.name
 .row
   .col-md-8
-    %p.lead= @category.name
-    - @jobs.each do |job|
-      .media
-        .media-body
-          %h4.media-heading
-            = link_to job.title, [job.category, job]
+    %p.lead
+      = render @jobs
   .col-md-4
-    = link_to "Post a New #{@category.name} Job", new_category_job_path(@category), class: 'btn btn-success'
+    = link_to "Post a New #{@category.name} Job", new_job_path(@category), class: 'btn btn-success'
   
