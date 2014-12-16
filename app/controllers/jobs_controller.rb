@@ -9,9 +9,12 @@ class JobsController < ApplicationController
   #     @jobs = Job.where(category_id: @category_id).newest_first
   #   end
   # end
-
   def index
      @jobs = Job.all#search(params[:search])
+  end
+
+  def show
+    @job = Job.find(params[:id])
   end
 
   def new
@@ -19,7 +22,6 @@ class JobsController < ApplicationController
   end
 
   def create
-    @category = Category.find(params[:category_id]) 
     @job = Job.new(job_params)
     #@job = current_user.jobs.build(job_params)
     @job.category = @category
@@ -32,6 +34,31 @@ class JobsController < ApplicationController
     end
   end
 
+  def edit
+     @job = Job.find(params[:id])  
+  end
+  
+  def update
+    @job = Job.find(params[:id])  
+    if @job.update_attributes(job_params)
+      flash[:notice] = "Job has been updated"
+      redirect_to [@category, @job]
+    else
+      flash[:error] = "There was an error editing the Job.  Please try again"
+      render :edit
+     end
+   end
+ 
+   def destroy
+     @job = Job.find(params[:id])   
+     if @job.destroy
+        flash[:notice] = "Job has been deleted"
+      redirect_to root_path
+     else
+      flash[:error] = "There was an error deleting the Job.  Please try again"
+      render :show
+     end
+   end
 
   private
 

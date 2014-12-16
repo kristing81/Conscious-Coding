@@ -37,7 +37,7 @@
                   %input#srch-term.form-control{:name => "srch-term", :placeholder => "Search jobs", :type => "text"}/
                   .input-group-btn
                     %button#search-button.btn.btn-default{:type => "submit"}
-                      %i.glyphicon.glyphicon-search
+                     
       - if flash[:notice]
         .alert.alert-success
           %button.close{"data-dismiss" => "alert", :type => "button"} ×
@@ -52,13 +52,23 @@
           = flash[:alert]
     .container
       = yield
-    / %footer 
-    /   .container
-    /     .row.col-footer.col-md-3.col-md-offset-1
-    /       %h4.footer Navigate
-    /     .row.col-footer.col-md-3.col-md-offset-1
-    /       %h4.footer Contact
-    /     .row.col-footer.col-md-3.col-md-offset-1            
-    /       %h4.footer More Info
-
-    /   .copyright © Conscious Coding
+    %footer
+      .container
+        .row
+          .navbar.navbar-inverse.navbar-fixed-bottom
+            .navbar-header
+            %button.navbar-toggle{type: "button", "data-toggle" => "collapse", "data-target" => "#footer"}
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            .navbar-collapse.collapse#footer
+              %ul.nav.navbar-nav
+                %li
+                  %a{:href => "#"} Contact Us
+                %li
+                  %a{:href => "#"} Terms and Conditions
+                %li
+                  %a{:href => "#"} Privacy Policy
+              %ul.nav.navbar-nav.pull-right
+                %li.copyright © Conscious Coding
+          / .copyright © Conscious Coding

@@ -1,0 +1,10 @@
+%head
+  %script{:src => "jobs.js"}
+  :javascript
+    $( document ).ready(function());
+%body
+  .container
+    .row.col-md-8.col-md-offset-2
+      %h1 Edit Job
+      = render  partial: 'form'
+      = link_to 'Back', root_path

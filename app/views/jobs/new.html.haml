@@ -4,7 +4,8 @@
     $( document ).ready(function());
 %body
   .container
-    .row.col-md-8.margin-top-1
-      %h1 Post New Job
-      = render  partial: 'form'
-      = link_to 'Back', root_path
+    .row
+      .col-md-8.col-md-offset-2
+        %h1 Post New Job
+        = render  partial: 'form'
+        = link_to 'Back', root_path

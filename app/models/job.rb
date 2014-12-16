@@ -8,7 +8,7 @@ class Job
   field :category, type: String
   field :job_type, type: String
   field :location, type: String
-  field :created_on, type: Date
+  field :created_at, type: Date
   field :skills, type: Array, default: []
   field :company, type: String
   field :url, type: String
@@ -20,6 +20,8 @@ class Job
   accepts_nested_attributes_for :category
   has_one :job_type
   scope :newest_first, lambda { order("jobs.created_at DESC") }
+  scope :recent, lambda { where("jobs. created_at => 1.week.ago") }
+
 
   validates_presence_of :title
 
@@ -30,6 +32,10 @@ class Job
   def raw_skills=(skill_string)
     self.skills = skill_string.split(",")
   end
+
+  def self.recent # All prices of last week.
+      where(:created_at => 1.week.ago)
+   end
 
   # def search
   #   @search = params[:search]

@@ -1,9 +1,25 @@
 .container
-  .row
-    .col-md-8
-      %h1 Jobs
-      / =simple_form_for :search, :method => :get  do |f|
-      /   =f.input :search
-      /   =f.submit "Search"
-      - @jobs.each do |job| 
-        %p= link_to job.title#, [category, job]
+%h1 Jobs
+/ =simple_form_for :search, :method => :get  do |f|
+/   =f.input :search
+/   =f.submit "Search"
+.container
+  %table.table.table-striped.table-hover
+    %tr 
+      %thead
+        %th Job Title
+        %th 
+          Location
+          %i.glyphicon.glyphicon-map-marker
+        %th 
+          Schedule
+          %i.glyphicon.glyphicon-time 
+   
+    %tr
+    - @jobs.each do |job|
+      %tr
+        %td= link_to job.title, job
+        %td= job.location
+        %td= job.job_type
+      %tr
+%br
