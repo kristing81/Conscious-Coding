@@ -47,6 +47,7 @@ gem 'simple_form'
 gem 'kaminari'
 
 gem 'mongoid'
+gem 'simple_enum', '~> 2.1.1', require: 'simple_enum/mongoid'
 
 gem 'bson_ext'
 

@@ -22,15 +22,20 @@
 
 body{
    padding-top: 70px;
-   font-family: 'Lato', sans-serif;
-    /*height: 100%;
-    background: -webkit-linear-gradient(90deg, #668594 10%, #B2D1E0 90%);
-    background:    -moz-linear-gradient(90deg, #668594 10%, #B2D1E0 90%);
-    background:     -ms-linear-gradient(90deg, #668594 10%, #B2D1E0 90%);
-    background:      -o-linear-gradient(90deg, #668594 10%, #B2D1E0 90%);
-    background:         linear-gradient(90deg, #668594 10%, #B2D1E0 90%);
-    font-family: 'Lato', sans-serif;*/
+   font-family: "Open Sans", sans-serif;
+    height: 100%;
+    background: -webkit-linear-gradient(90deg, #B2D1D1 10%, #F0F6F6 90%);
+    background:    -moz-linear-gradient(90deg, #B2D1D1 10%, #F0F6F6 90%);
+    background:     -ms-linear-gradient(90deg, #B2D1D1 10%, #F0F6F6 90%);
+    background:      -o-linear-gradient(90deg, #B2D1D1 10%, #F0F6F6 90%);
+    background:         linear-gradient(90deg, #B2D1D1 10%, #F0F6F6 90%);
 
+ }
+
+ h1,h2,h3,h4,h5,h6{
+  font-family: "Open Sans", sans-serif;
+  color: #004747;
+  margin-left: -10px;
  }
  .container {
    /*border-bottom: 1px dotted #7C7C7C;*/
@@ -41,8 +46,7 @@ li.header {
   font-size: 2em;
 }
 
-.navbar-inverse {
-  background-color: #00334C;
+nav.navbar-fixed-top {
   padding-right: 10px;
 
 }
@@ -58,9 +62,10 @@ a.select2-choice, .select2-drop-mask, #select2-drop-mask, .select2-search {
   padding: 10px;
 }
 
-#search-button {
+.search-button{
   height:30px;
 }
+
 
 #footer > {
   position: absolute;
@@ -68,6 +73,23 @@ a.select2-choice, .select2-drop-mask, #select2-drop-mask, .select2-search {
   width: 100%;
   height: 60px;
   margin-top: 60px;
+}
+
+#footer.navbar-collapse {
+  border-color: none;
+  background: -webkit-linear-gradient(90deg, #006666 10%, #B2D1D1 90%);
+  background:    -moz-linear-gradient(90deg, #006666 10%, #B2D1D1 90%);
+  background:     -ms-linear-gradient(90deg, #006666 10%, #B2D1D1 90%);
+  background:      -o-linear-gradient(90deg, #006666 10%, #B2D1D1 90%);
+  background:         linear-gradient(90deg, #006666 10%, #B2D1D1 90%);
+
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+border-color: #006666;
+}
+
+a {
+  color: #004747;
 }
 
 .copyright {

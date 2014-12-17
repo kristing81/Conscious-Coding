@@ -1,6 +1,9 @@
 class Employer
   include Mongoid::Document
   include Mongoid::Timestamps
+  include SimpleEnum::Mongoid
+
+  as_enum :role, [:employer]
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -35,10 +38,15 @@ class Employer
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
-  field :employer_type,   type: Array
+  field :location,   type: String
   field :company_name,   type: String
   field :description,   type: String
-  field :active_posting,   type: Boolean
+  field :url,   type: String
+  field :role, type: String, default: "employer"
 
   embeds_many :jobs
+
+  def employer?
+    role == "employer"
+  end
 end

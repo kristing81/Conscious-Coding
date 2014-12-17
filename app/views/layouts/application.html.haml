@@ -8,7 +8,7 @@
   %body
     .container
       .row
-        %nav.navbar-inverse.navbar-fixed-top{role: "navigation"}
+        %nav.navbar-fixed-top{role: "navigation"}
           .navbar-header
             %button.navbar-toggle{type: "button", "data-toggle" => "collapse", "data-target" => "#collapse"}
               %span.sr-only Toggle navigation
@@ -22,22 +22,38 @@
                 %li= link_to "About", about_path
                 %li.dropdown{role: "presentation"}
                   %a.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", href: "#", :role => "button"}
-                    Jobs by Category
+                    Jobs
                     %span.caret
                   %ul.dropdown-menu{role: "menu"}
+                    %li= link_to "All Jobs", jobs_path
+                    %li
+                    Jobs by Category
                     - Category.all.each do |cat|
                       %li= link_to cat.name, category_path(cat)#jobs_by_category_url(category_name: cat) #categories_path(category_name: cat)
-                %li= link_to "All Jobs", jobs_path      
-                %li= link_to "Post a Job", new_job_path
+                    
+                %li= link_to "Explore Organizations", employers_path
+                %li.dropdown{role: "presentation"}
+                  %a.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", href: "#", :role => "button"}
+                    Employers
+                    %span.caret
+                  %ul.dropdown-menu{role: "menu"}
+                    %li= link_to "Employer Login", new_employer_registration_path     
+                    %li= link_to "Post a Job", new_job_path 
                 %li= link_to "Applicant Login",  applicant_omniauth_authorize_path(:linkedin)
-                %li= link_to "Employer Login", new_employer_registration_path
-              .col-sm-3.col-md-3.pull-right
+              .search_form.col-md-3.col-md-offset-1
                 %form.navbar-form{:role => "search"}
                 .input-group
                   %input#srch-term.form-control{:name => "srch-term", :placeholder => "Search jobs", :type => "text"}/
                   .input-group-btn
                     %button#search-button.btn.btn-default{:type => "submit"}
-                     
+              / .pull-right.user-info
+              /   - if employer?
+              /     Hello #{employer.company_name}! #{link_to "Sign out", destroy_employer_session_path, method: :delete}
+              /   - else
+              /     = link_to "Employer Login", new_employer_session_path
+              /     or
+              /     \#{link_to "Applicant Login", applicant_omniauth_authorize_path(:linkedin)}
+                           
       - if flash[:notice]
         .alert.alert-success
           %button.close{"data-dismiss" => "alert", :type => "button"} ×

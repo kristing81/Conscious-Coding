@@ -1,5 +1,4 @@
 class JobsController < ApplicationController
-
   # def index
   #   @jobs = Job.search(params[:search])
   #   if params[:category_name].blank?

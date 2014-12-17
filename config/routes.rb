@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :applicants, controllers: { omniauth_callbacks: "omniauth_callbacks"}
   devise_for :employers
 
+  resources :employers
   resources :jobs
 
   resources :categories

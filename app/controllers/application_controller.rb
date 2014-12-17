@@ -12,10 +12,25 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(applicants)
-    # need to write path!!
+    redirect_to jobs_path
   end
 
   def after_sign_in_path_for(employers)
-    # need to write path
+    redirect_to edit_employer_path
   end
+  def employer?
+    if 
+      current_user.employer?
+      return true
+    end
+  end
+
+  def authorize_employer
+    unless employer?
+      flash[:error] = "Sorry you don't have permission to do that"
+      redirect_to root_path
+      false
+    end
+  end
+
 end

@@ -1,0 +1,36 @@
+.row.intro
+  .col-md-6.margin-top-1.col-md-offset-2
+    %h2 About #{@employer.company_name}
+    %p
+      =link_to "#{@employer.url}", @employer.url
+    %hr
+    %h6 Location
+    %i.glyphicon.glyphicon-map-marker.pull-right
+    = @employer.location
+    %hr
+    %h6 About
+    = @employer.description
+
+.row
+  .col-md-6.margin-top-1.col-md-offset-2
+    %h3 Current Jobs with #{@employer.company_name}
+    %table.table.table-striped.table-hover
+      %tr 
+        %thead
+          %th Job Title
+          %th 
+            Location
+            %i.glyphicon.glyphicon-map-marker
+          %th 
+            Schedule
+            %i.glyphicon.glyphicon-time  
+      %tr
+      - @jobs.each do |job|
+        %tr
+          %td= link_to job.title, job
+          %td= job.location
+          %td= job.job_type
+        %tr
+%br
+.col-md-4 
+= link_to "Back", root_path, class: "btn btn-sm btn-default"
