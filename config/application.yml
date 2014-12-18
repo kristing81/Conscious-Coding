@@ -1,0 +1,20 @@
+# Add configuration values here, as shown below.
+#
+# pusher_app_id: "2954"
+# pusher_key: 7381a978f7dd7f9a1117
+# pusher_secret: abdc3b896a0ffb85d373
+# stripe_api_key: sk_test_2J0l093xOyW72XUYJHE4Dv2r
+# stripe_publishable_key: pk_test_ro9jV5SNwGb1yYlQfzG17LHK
+#
+# production:
+#   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
+#   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
+SENDGRID_USERNAME: app32087641@heroku.com
+SENDGRID_PASSWORD: s2fzzr3d
+SECRET_KEY_BASE: c44c6f41ad3a18b6f4e8d2ca9b8a4624a4d512d8637bf97b11492e00df1d29aaffe7deb5345a4d2370611bb23023d93d305b7d77c2bccea88f7f8efbbbb0d065
+LINKEDIN_CONSUMER_KEY: 75p0z4or7kkkrh
+LINKEDIN_CONSUMER_SECRET: KvFMYM4F3kXADj0r
+OAUTH_USER_TOKEN: 14a581b1-55a3-4b88-b894-1aad0e101106
+OAUTH_USER_SECRET: 959f9d86-d96a-4fcb-902c-23447c76fc21
+STRIPE_PUBLISHABLE_KEY: pk_test_TD7VpYzO3RpJty54reMtjfCs
+STRIPE_SECRET_KEY: sk_test_irRH5RdYsIrhiWqQsOKekuZd
