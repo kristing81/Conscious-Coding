@@ -1,25 +1,28 @@
 .container
-%h1 Jobs
-/ =simple_form_for :search, :method => :get  do |f|
-/   =f.input :search
-/   =f.submit "Search"
+  .row.col-md-10.col-md-offset-1
+    %h3 Search for Jobs
+    = render partial: 'search'
+
+
 .container
-  %table.table.table-striped.table-hover
-    %tr 
-      %thead
-        %th Job Title
-        %th 
-          Location
-          %i.glyphicon.glyphicon-map-marker
-        %th 
-          Schedule
-          %i.glyphicon.glyphicon-time 
-   
-    %tr
-    - @jobs.each do |job|
+  .row.col-md-10.col-md-offset-1
+    %h3 Current Jobs
+    %table.table.table-striped.table-hover
+      %tr 
+        %thead
+          %th Job Title
+          %th 
+            Location
+            %i.glyphicon.glyphicon-map-marker
+          %th 
+            Schedule
+            %i.glyphicon.glyphicon-time 
+     
       %tr
-        %td= link_to job.title, job
-        %td= job.location
-        %td= job.job_type
-      %tr
-%br
+      - @jobs.each do |job|
+        %tr
+          %td= link_to job.title, job
+          %td= job.location
+          %td= job.job_type
+        %tr
+  %br

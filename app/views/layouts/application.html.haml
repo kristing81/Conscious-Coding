@@ -41,6 +41,8 @@
                     %li= link_to "Employer Login", new_employer_session_path     
                     %li= link_to "Post a Job", new_job_path 
                 %li= link_to "Applicant Login",  applicant_omniauth_authorize_path(:linkedin)
+                / #search
+                /   = render :partial => 'jobs/search'
               .search_form.col-md-3.col-md-offset-1
                 %form.navbar-form{:role => "search"}
                 .input-group
@@ -48,7 +50,7 @@
                   .input-group-btn
                     %button#search-button.btn.btn-default{:type => "submit"}
               / .pull-right.user-info
-              /   - if employer?
+              /   - if current_user?
               /     Hello #{employer.company_name}! #{link_to "Sign out", destroy_employer_session_path, method: :delete}
               /   - else
               /     = link_to "Employer Login", new_employer_session_path

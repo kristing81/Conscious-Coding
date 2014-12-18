@@ -1,19 +1,19 @@
 class JobsController < ApplicationController
 
-  before_filter :authenticate_user!, except: [:index, :show]
+  #before_filter :authenticate_user!, except: [:index, :show]
 
-  # def index
-  #   @jobs = Job.search(params[:search])
-  #   if params[:category_name].blank?
-  #     @jobs = Job.all.newest_first
-  #   else
-  #     @category_id = Category.where(slug: params[:category_name]).first.id
-  #     @jobs = Job.where(category_id: @category_id).newest_first
-  #   end
-  # end
   def index
-     @jobs = Job.all
+    if params[:search]
+      @jobs = Job.search(params[:search]).newest_first
+    else
+       @jobs = Job.all.newest_first
+    end
   end
+
+  def search
+    @jobs = Job.search(params[:search]).newest_first
+  end
+
 
   def show
     @job = Job.find(params[:id])
