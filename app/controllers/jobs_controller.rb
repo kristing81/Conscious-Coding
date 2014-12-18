@@ -1,4 +1,7 @@
 class JobsController < ApplicationController
+
+  before_filter :authenticate_user!, except: [:index, :show]
+
   # def index
   #   @jobs = Job.search(params[:search])
   #   if params[:category_name].blank?
