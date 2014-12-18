@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :jobs
 
   resources :categories
+
+  resources :charges, only: [:new, :create]
   
   get "/:categories/:category_id" => "category#show"#, as: :jobs_by_category
   #get "/:category_name" => "jobs#index", as: :jobs_by_category

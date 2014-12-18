@@ -9,7 +9,7 @@ class JobsController < ApplicationController
   #   end
   # end
   def index
-     @jobs = Job.all#search(params[:search])
+     @jobs = Job.all
   end
 
   def show
@@ -26,7 +26,7 @@ class JobsController < ApplicationController
     @job.category = @category
     if @job.save
       flash[:notice] = "Job has been successfully created"
-      redirect_to jobs_path #[@job.category, @job]
+      redirect_to new_charge_path 
     else
       flash[:error] = "There was an error saving the Job.  Please try again"
       render :new
@@ -52,7 +52,7 @@ class JobsController < ApplicationController
      @job = Job.find(params[:id])   
      if @job.destroy
         flash[:notice] = "Job has been deleted"
-      redirect_to root_path
+      redirect_to jobs_path
      else
       flash[:error] = "There was an error deleting the Job.  Please try again"
       render :show
