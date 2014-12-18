@@ -1,0 +1,6 @@
+.container
+  .col-md-6.col-md-offset-2
+    %h1 Explore Employers
+    - @employers.each do |employer|
+      = link_to employer.company_name, employer
+       
