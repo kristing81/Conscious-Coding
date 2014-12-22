@@ -1,18 +1,18 @@
-.row.intro
-  .col-md-6.margin-top-1.col-md-offset-2
+.container
+  .row.col-md-6.col-md-offset-1
     %h2 About #{@employer.company_name}
     %p
       =link_to "#{@employer.url}", @employer.url
     %hr
-    %h6 Location
+    %h6 
+      Location
     %i.glyphicon.glyphicon-map-marker.pull-right
     = @employer.location
     %hr
     %h6 About
     = @employer.description
 
-.row
-  .col-md-6.margin-top-1.col-md-offset-2
+  .row.col-md-6.col-md-offset-1
     %h3 Current Jobs with #{@employer.company_name}
     %table.table.table-striped.table-hover
       %tr 

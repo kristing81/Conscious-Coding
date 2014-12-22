@@ -2,6 +2,7 @@ require 'httparty'
 class Job
   include Mongoid::Document
   include Mongoid::Timestamps
+  #attr_accessible :title, :description, :category, :job_type, :location,:skills, :company, :url
 
   field :title, type: String
   field :description, type: String
@@ -35,7 +36,7 @@ class Job
 
   def self.recent # All prices of last week.
       where(:created_at => 1.week.ago)
-   end
+  end
 
   # def search
   #   @search = params[:search]
@@ -43,11 +44,16 @@ class Job
 
   def self.search(search)
     if search
-      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+      find(:all, :conditions => ['title LIKE ? OR description LIKE ?  OR location LIKE ?  OR skills LIKE ?  OR category LIKE ?  OR company LIKE ?  OR job_type LIKE ?', "%#{search}%"])
     else
       find(:all)
     end
   end
+
+  # def self.search(search)
+  #   search_condition = "%" + search + "%"
+  #   find(:all, :conditions => ['title LIKE ? OR description LIKE ? location LIKE ? skills LIKE ? category LIKE ? company LIKE ? job_type LIKE ?', search_condition, search_condition])
+  # end
 
 
    # include HTTParty
