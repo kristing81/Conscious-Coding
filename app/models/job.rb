@@ -7,19 +7,16 @@ class Job
   field :title, type: String
   field :description, type: String
   field :category, type: String
-  field :job_type, type: String
   field :location, type: String
   field :created_at, type: Date
   field :skills, type: Array, default: []
   field :company, type: String
   field :url, type: String
-  field :category_id, type: Integer
-  field :job_type_id, type: Integer
 
   belongs_to :employer
   belongs_to :category
   accepts_nested_attributes_for :category
-  has_one :job_type
+  belongs_to :job_type
   scope :newest_first, lambda { order("jobs.created_at DESC") }
   scope :recent, lambda { where("jobs. created_at => 1.week.ago") }
 

@@ -10,6 +10,7 @@
     %table.table.table-striped.table-hover
       %tr 
         %thead
+          %th Posted On
           %th Job Title
           %th 
             Location
@@ -19,8 +20,9 @@
             %i.glyphicon.glyphicon-time 
      
       %tr
-      - @jobs.each do |job|
+      - @jobs.newest_first.each do |job|
         %tr
+          %td= job.created_at
           %td= link_to job.title, job
           %td= job.location
           %td= job.job_type

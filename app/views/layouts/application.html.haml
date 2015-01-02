@@ -43,14 +43,15 @@
                 %li= link_to "Applicant Login",  applicant_omniauth_authorize_path(:linkedin)
                 / #search
                 /   = render :partial => 'jobs/search'
+                / render each partial using if/else
               .search_form.col-md-3.col-md-offset-1
                 %form.navbar-form{:role => "search"}
                 .input-group
                   %input#srch-term.form-control{:name => "srch-term", :placeholder => "Search jobs", :type => "text"}/
                   .input-group-btn
-                    %button#search-button.btn.btn-default{:type => "submit"}
+                    %button#search-button.btn.btn-lg.btn-default{:type => "submit"}
               / .pull-right.user-info
-              /   - if current_user?
+              /   - if anyone_signed_in?
               /     Hello #{employer.company_name}! #{link_to "Sign out", destroy_employer_session_path, method: :delete}
               /   - else
               /     = link_to "Employer Login", new_employer_session_path
@@ -78,6 +79,7 @@
           .navbar.navbar-inverse.navbar-fixed-bottom{role: "navigation"}
             .navbar-header
             %button.navbar-toggle{type: "button", "data-toggle" => "collapse", "data-target" => "#footer"}
+              %span.sr-only Toggle navigation
               %span.icon-bar
               %span.icon-bar
               %span.icon-bar

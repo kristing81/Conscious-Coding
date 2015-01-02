@@ -1,4 +1,5 @@
 class EmployersController < ApplicationController
+  before_action :authenticate_employer!, except: [:index,:show]
 
   def index
     @employers = Employer.all

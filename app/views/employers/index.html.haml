@@ -1,6 +1,21 @@
 .container
   .row.col-md-10.col-md-offset-1
     %h3 Explore Employers
-    - @employers.each do |employer|
-      = link_to employer.company_name, employer
-       
+    %table.table.table-striped.table-hover
+      %tr 
+        %thead
+          %th Name
+          %th 
+            Location
+            %i.glyphicon.glyphicon-map-marker
+          %th 
+            Url
+     
+      %tr
+      - @employers.each do |employer|
+        %tr
+          %td= link_to employer.company_name, employer
+          %td= employer.location
+          %td= employer.url
+        %tr
+  %br      
