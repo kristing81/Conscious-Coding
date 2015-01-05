@@ -1,16 +1,16 @@
 .container
   .row.col-md-10.col-md-offset-1
     %h3 Search for Jobs
-    = render partial: 'search'
-
-
+    = render partial: 'jobs/search'
 .container
   .row.col-md-10.col-md-offset-1
     %h3 Current Jobs
     %table.table.table-striped.table-hover
       %tr 
         %thead
-          %th Posted On
+          %th 
+            Posted On
+            %i.glyphicon.glyphicon-calendar
           %th Job Title
           %th 
             Location
@@ -25,6 +25,6 @@
           %td= job.created_at
           %td= link_to job.title, job
           %td= job.location
-          %td= job.job_type
+          %td= job.job_type.name
         %tr
   %br

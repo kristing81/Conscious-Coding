@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   resources :employers
   resources :jobs
-
   resources :categories
 
   resources :charges, only: [:new, :create]

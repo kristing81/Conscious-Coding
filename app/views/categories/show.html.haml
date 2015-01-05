@@ -4,7 +4,7 @@
 .row
   .col-md-8
     %p.lead
-      = render @jobs
+      = render @category.jobs
   .col-md-4
     = link_to "Post a New #{@category.name} Job", new_job_path(@category), class: 'btn btn-success'
   

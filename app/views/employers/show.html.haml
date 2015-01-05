@@ -3,10 +3,10 @@
     %h2 About #{@employer.company_name}
     %p
       =link_to "#{@employer.url}", @employer.url
+    / %a{:href => "{@employer.url}"}
     %hr
     %h6 
       Location
-    %i.glyphicon.glyphicon-map-marker.pull-right
     = @employer.location
     %hr
     %h6 About

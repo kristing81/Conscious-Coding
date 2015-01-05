@@ -23,15 +23,9 @@ class ApplicationController < ActionController::Base
     redirect_to jobs_path
   end
 
-  def after_sign_in_path_for(employers)
-    redirect_to edit_employer_path
-  end
-  def employer?
-    if 
-      current_user.employer?
-      return true
-    end
-  end
+  # def after_sign_in_path_for(employers)
+  #   redirect_to root_path
+  # end
 
   def authorize_employer
     unless employer?
