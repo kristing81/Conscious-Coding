@@ -5,9 +5,7 @@
     %p Are you ready to program with a purpose?
   .row.col-md-4
     .input-group
-    / =simple_form_for :search, url: search_path(:search), :method => :get  do |f|
-    / =f.input :search
-    / =f.submit "Search"
+      = render partial: "jobs/search"
 .container
 
 
@@ -17,11 +15,12 @@
   .row.col-md-10.col-md-offset-1
     %p
     %span.label.label-default Latest Jobs
-    
   /   %table.table.table-striped.table-hover
   /     %tr 
   /       %thead
-  /         %th Posted On
+  /         %th 
+  /           Posted On
+  /           %i.glyphicon.glyphicon-calendar
   /         %th Job Title
   /         %th 
   /           Location
@@ -36,6 +35,6 @@
   /         %td= job.created_at
   /         %td= link_to job.title, job
   /         %td= job.location
-  /         %td= job.job_type
+  /         %td= job.job_type.name
   /       %tr
   / %br

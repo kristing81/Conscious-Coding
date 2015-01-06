@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(applicants)
-    redirect_to jobs_path
+    redirect_to root_path
   end
 
   # def after_sign_in_path_for(employers)

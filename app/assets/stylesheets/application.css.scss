@@ -39,7 +39,6 @@ body{
   margin-left: -15px;
  }
  .container {
-   /*border-bottom: 1px dotted #7C7C7C;*/
    margin-bottom: 30px;
  }
 
@@ -49,12 +48,12 @@ li.header {
 
 nav.navbar-fixed-top {
   padding-right: 10px;
-
 }
 
 .navbar.navbar-inverse {
   width: 100%;
 }
+
 a.select2-choice, .select2-drop-mask, #select2-drop-mask, .select2-search {
    width: inherit;
    margin: -15px;
@@ -86,10 +85,14 @@ a.select2-choice, .select2-drop-mask, #select2-drop-mask, .select2-search {
   background:         linear-gradient(90deg, #006666 10%, #B2D1D1 90%);
 
 }
-div#footer.navbar-inverse.navbar-collapse {
-border-color: #B2D1D1;
+div#footer.navbar-collapse.collapse {
+  border-color: #B2D1D1;
+  height: 40px;
 }
 
+.nav-pills {
+
+}
 a {
   color: #004747;
 }

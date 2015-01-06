@@ -1,13 +1,14 @@
 class JobsController < ApplicationController
 
-  #before_filter :authenticate_user!, except: [:index, :show]
+  #before_filter :authenticate_employer!, only: [:new, :create, :edit, :update, :delete:]
 
   def index
-    if params[:search]
-      @jobs = Job.search(params[:search]).newest_first
-    else
-       @jobs = Job.all.newest_first
-    end
+    @jobs = Job.search(params[:search])
+    # if params[:search]
+    #   @jobs = Job.search(params[:search]).newest_first
+    # else
+    #   @jobs = Job.all.newest_first
+    # end
   end
 
   def search
