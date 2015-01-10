@@ -3,28 +3,33 @@
     %h3 Search for Jobs
     = render partial: 'jobs/search'
 .container
-  .row.col-md-10.col-md-offset-1
-    %h3 Current Jobs
-    %table.table.table-striped.table-hover
-      %tr 
-        %thead
-          %th 
-            Posted On
-            %i.glyphicon.glyphicon-calendar
-          %th Job Title
-          %th 
-            Location
-            %i.glyphicon.glyphicon-map-marker
-          %th 
-            Schedule
-            %i.glyphicon.glyphicon-time 
-     
-      %tr
-      - @jobs.newest_first.each do |job|
+  - if @jobs.blank?
+    .row.col-md-10.col-md-offset-1
+      .alert.alert-danger
+        No Jobs found. Try your search again.
+  - else
+    .row.col-md-10.col-md-offset-1
+      %h3 Current Jobs
+      %table.table.table-striped.table-hover
+        %tr 
+          %thead
+            %th 
+              Posted On
+              %i.glyphicon.glyphicon-calendar
+            %th Job Title
+            %th 
+              Location
+              %i.glyphicon.glyphicon-map-marker
+            %th 
+              Schedule
+              %i.glyphicon.glyphicon-time 
+       
         %tr
-          %td= job.created_at
-          %td= link_to job.title, job
-          %td= job.location
-          %td= job.job_type.name
-        %tr
+        - @jobs.newest_first.each do |job|
+          %tr
+            %td= job.created_at
+            %td= link_to job.title, job
+            %td= job.location
+            %td= job.job_type.name
+          %tr
   %br

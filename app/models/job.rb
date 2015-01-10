@@ -35,25 +35,28 @@ class Job
       where(:created_at => 1.week.ago)
   end
 
-  def self.search(search)
-    if search
-      find(:all, :conditions => ['skills LIKE ?', "%#{search}%"])
-    else
-      find(:all)
-    end
-  end
-  # def self.search(search)
-  #   if search
-  #     find(:all, :conditions => ['title LIKE ? OR description LIKE ?  OR location LIKE ?  OR skills LIKE ?  OR category LIKE ?  OR company LIKE ?  OR job_type LIKE ?', "%#{search}%"])
-  #   else
-  #     find(:all)
-  #   end
-  # end
+  def self.search(params)
 
-  # def self.search(search)
-  #   search_condition = "%" + search + "%"
-  #   find(:all, :conditions => ['title LIKE ? OR description LIKE ? location LIKE ? skills LIKE ? category LIKE ? company LIKE ? job_type LIKE ?', search_condition, search_condition])
-  # end
+    jobs = Job.scoped
+
+    if skills
+      jobs.where(:skills.in => skills.split(",").collect(&:strip))
+    end
+
+    if title
+      jobs.where(params[:title]).split(" ").collect(&:strip)
+      #Job.any_of(title: /^#{title}/i)
+      #jobs.where(:title => Regexp.new(title, true))
+      #jobs.where(title: /#{Regexp.escape(search)}/i) 
+      #jobs.where(title.split(" ").collect(&:strip))
+    end
+
+    # if description
+    #   jobs.where(description.split(" ").collect(&:strip))
+    # end
+    jobs
+
+  end
 
 
    # include HTTParty
@@ -83,6 +86,4 @@ class Job
   #     &useragent=Mozilla/%2F4.0%28Firefox%29&v=2
   #   ")
   # end
-
-
 end
