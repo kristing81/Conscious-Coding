@@ -1,9 +1,13 @@
 = form_tag jobs_path, :method => "get", class: 'form-horizontal', id: "search-form" do
-  .input-append
-  = text_field_tag :skills, :title, params[:skills][:title], class: "form-control", placeholder: "Rails, Javascript, Developer, . .."
+  = text_field_tag :title, params[:title],  class: "form-control", placeholder: "Search by Job Title ... Designer, Developer, CTO ..."
   %br
-  %button.btn.btn-default{:type => "submit", :name => nil}
-    %i.glyphicon.glyphicon-search
+  = text_field_tag :skills, params[:skills], class: "form-control", placeholder: " Search by Job Skills ... Rails, Javascript, CSS ..."
+  .input-group
+    .input-append
+   
+    %br
+    %button.btn.btn-default{:type => "submit", :name => nil}
+      %i.glyphicon.glyphicon-search
 
 
 / = simple_form_for :search, html: { class: 'form-horizontal'}, :method => :get  do |f|

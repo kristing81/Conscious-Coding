@@ -35,17 +35,17 @@ class Job
       where(:created_at => 1.week.ago)
   end
 
-  def self.search(params)
+  def self.search(options = {})
 
     jobs = Job.scoped
 
-    if skills
-      jobs.where(:skills.in => skills.split(",").collect(&:strip))
+    if options[:skills].present?
+      jobs = jobs.where(:skills.in => options[:skills].split(",").collect(&:strip))
     end
 
-    if title
-      jobs.where(params[:title]).split(" ").collect(&:strip)
-      #Job.any_of(title: /^#{title}/i)
+    if options[:title].present?
+      #jobs.where(params[:title].split(" ").collect(&:strip))
+      jobs = jobs.where(title: /#{options[:title]}/i)
       #jobs.where(:title => Regexp.new(title, true))
       #jobs.where(title: /#{Regexp.escape(search)}/i) 
       #jobs.where(title.split(" ").collect(&:strip))

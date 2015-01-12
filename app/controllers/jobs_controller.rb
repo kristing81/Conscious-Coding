@@ -3,7 +3,8 @@ class JobsController < ApplicationController
   #before_filter :authenticate_employer!, only: [:new, :create, :edit, :update, :delete:]
 
   def index
-    @jobs = Job.search(params[:skills][:title])
+    search_options = params
+    @jobs = Job.search(search_options)
   end
 
 
