@@ -2,7 +2,6 @@ require 'httparty'
 class Job
   include Mongoid::Document
   include Mongoid::Timestamps
-  #attr_accessible :title, :description, :category, :job_type, :location,:skills, :company, :url
 
   field :title, type: String
   field :description, type: String
@@ -17,8 +16,8 @@ class Job
   belongs_to :category
   accepts_nested_attributes_for :category
   belongs_to :job_type
-  scope :newest_first, lambda { order("jobs.created_at DESC") }
-  scope :recent, lambda { where("jobs. created_at => 1.week.ago") }
+  scope :newest_first, lambda { desc(:created_at) }
+  scope :recent, lambda { where(:created_at.gte => 1.week.ago) }
 
 
   validates_presence_of :title

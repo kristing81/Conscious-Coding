@@ -19,9 +19,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :name
   end
 
-  def after_sign_in_path_for(applicants)
-    redirect_to root_path
-  end
+  # def after_sign_in_path_for(resource)
+  #   redirect_to root_path
+  # end
 
   # def after_sign_in_path_for(employers)
   #   redirect_to root_path

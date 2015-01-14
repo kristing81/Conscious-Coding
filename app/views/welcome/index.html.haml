@@ -3,9 +3,7 @@
     %h1 Welcome to Conscious Coding
 
     %p Are you ready to program with a purpose?
-  .row.col-md-4
-    .input-group
-      = render partial: "jobs/search"
+    = render partial: "jobs/search"
 .container
 
 
@@ -15,26 +13,18 @@
   .row.col-md-10.col-md-offset-1
     %p
     %span.label.label-default Latest Jobs
-  /   %table.table.table-striped.table-hover
-  /     %tr 
-  /       %thead
-  /         %th 
-  /           Posted On
-  /           %i.glyphicon.glyphicon-calendar
-  /         %th Job Title
-  /         %th 
-  /           Location
-  /           %i.glyphicon.glyphicon-map-marker
-  /         %th 
-  /           Schedule
-  /           %i.glyphicon.glyphicon-time 
-     
-  /     %tr
-  /     - @jobs.each do |job|
-  /       %tr
-  /         %td= job.created_at
-  /         %td= link_to job.title, job
-  /         %td= job.location
-  /         %td= job.job_type.name
-  /       %tr
-  / %br
+    %table.table.table-striped.table-hover
+      %thead
+        %tr
+          %th 
+            Posted On
+            %i.glyphicon.glyphicon-calendar
+          %th Job Title
+          %th 
+            Location
+            %i.glyphicon.glyphicon-map-marker
+          %th 
+            Schedule
+            %i.glyphicon.glyphicon-time 
+      %tbody
+        = render @jobs
