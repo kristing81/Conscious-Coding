@@ -3,8 +3,21 @@
     %h1= @category.name
 .row
   .col-md-8
-    %p.lead
-      = render @category.jobs
+    %table.table.table-striped.table-hover
+      %thead
+        %tr
+          %th 
+            Posted On
+            %i.glyphicon.glyphicon-calendar
+          %th Job Title
+          %th 
+            Location
+            %i.glyphicon.glyphicon-map-marker
+          %th 
+            Schedule
+            %i.glyphicon.glyphicon-time 
+      %tbody
+        = render @category.jobs
   .col-md-4
     = link_to "Post a New #{@category.name} Job", new_job_path(@category), class: 'btn btn-success'
   

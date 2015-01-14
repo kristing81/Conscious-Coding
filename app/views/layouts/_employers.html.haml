@@ -9,7 +9,7 @@
     #collapse.collapse.navbar-collapse
       %ul.nav.navbar-nav.nav-pills
         %li.header= link_to "Conscious Coding", root_path
-      %ul.nav.navbar-nav.navbar-right..nav-pills
+      %ul.nav.navbar-nav.nav-pills
         %li= link_to "About", about_path
         %li.dropdown{role: "presentation"}
           %a.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", href: "#", :role => "button"}
@@ -30,8 +30,12 @@
                 %li= link_to "Employer Sign up", new_employer_registration_path   
                 %li= link_to "Employer Login", new_employer_session_path     
                 %li= link_to "Post a Job", new_job_path 
-            .pull-right.employer-info
-            - if employer_signed_in?
-              Hello #{current_employer.company_name}! #{link_to "Sign out", destroy_employer_session_path, method: :delete}
-            - else
-              = link_to "Employer Sign Up", new_employer_registration_path
+      .pull-right.employer-info
+        - if employer_signed_in?
+          Hello #{current_employer.company_name}! #{link_to "Sign out", destroy_employer_session_path, method: :delete}
+        - else
+          = link_to "Employer Sign Up", new_employer_registration_path
+
+
+
+
