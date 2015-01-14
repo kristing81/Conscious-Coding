@@ -18,8 +18,6 @@ gem "select2-rails"
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 # Use jQuery as the JavaScript library
 gem 'jquery-rails', '~> 4.0.0.beta2'
@@ -47,20 +45,12 @@ gem 'simple_form'
 gem 'kaminari'
 
 gem 'mongoid'
+
+
 gem 'simple_enum', '~> 2.1.1', require: 'simple_enum/mongoid'
-
 gem 'bson_ext'
-
+gem 'whenever', :require => false
 gem 'httparty', '~> 0.13.3'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
