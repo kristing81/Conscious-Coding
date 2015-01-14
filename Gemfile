@@ -52,6 +52,7 @@ gem 'simple_enum', '~> 2.1.1', require: 'simple_enum/mongoid'
 gem 'bson_ext'
 
 gem 'httparty', '~> 0.13.3'
+gem 'indeed_api'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

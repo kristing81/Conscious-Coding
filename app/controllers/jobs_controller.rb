@@ -5,6 +5,7 @@ class JobsController < ApplicationController
   def index
     search_options = params
     @jobs = Job.search(search_options)
+    @indeed_jobs = IndeedAPI.search_jobs(q: "#{params[:title]} #{params[:skills]}" , jt: "internship")
   end
 
 

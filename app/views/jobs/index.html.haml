@@ -31,5 +31,10 @@
             %td= link_to job.title, job
             %td= job.location
             %td= job.job_type.name
+        - @indeed_jobs.results.each do |job|
           %tr
+            %td= job.date
+            %td= job.job_title
+            %td= job.location
+            %td Internship
   %br
