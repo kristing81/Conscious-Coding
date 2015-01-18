@@ -47,48 +47,4 @@ class Job
     end
     jobs
   end
-
-
-require 'httparty'  
-class IndeedApi
-  include HTTParty
-  base_uri = "http://api.indeed.com"
-
-
-
-  def indeed_jobs
-    
-    indeed_jobs = HTTParty.get(" http://api.indeed.com/ads/apisearch?publisher=5153643017932788
-      &q=nonprofit
-      &as_and=non-profit
-      &as_phr=
-      &as_any=designer+%22developer+%22systems+administrator%22+programmer
-      &l=us
-      &sort=date
-      &radius=
-      &st=
-      &jt=all
-      &start=
-      &limit=50
-      &fromage=60
-      &filter=1
-      &latlong=1
-      1&co=us
-      &chnl=
-      &userip=1.2.3.4
-      &useragent=Mozilla/%2F4.0%28Firefox%29&v=2
-    ")  #://body => {
-    # job title
-    # job description
-    # company
-    # job_type
-    # location
-  #}
-
-  end
-
-  #}
-
-  #response.indeed_jobs
-end
 end

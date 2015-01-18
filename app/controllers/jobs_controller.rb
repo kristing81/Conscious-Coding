@@ -4,10 +4,16 @@ class JobsController < ApplicationController
 
   def index
     search_options = params
-    @jobs = Job.search(search_options)
-    @indeed_jobs = IndeedAPI.search_jobs(q: "#{params[:title]} #{params[:skills]}" , jt: "internship")
+    @jobs = Job.search(search_options).page(params[:page]).per(10)
+    search_term = ["nonprofit developer engineer"]
+    search_term << params[:title] if params[:title].present?
+    #search_term << params[:skills].gsub("," , ' ')
+    @indeed_jobs = IndeedAPI.search_jobs(
+        :q => search_term.join(" "),
+        start: 10 * (params[:page].to_i - 1),
+        limit: 10,
+        sort: 'date')
   end
-
 
   def show
     @job = Job.find(params[:id])

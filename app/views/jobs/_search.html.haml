@@ -2,20 +2,11 @@
   = text_field_tag :title, params[:title],  class: "form-control", placeholder: "Search by Job Title ... Designer, Developer, CTO ..."
   %br
   = text_field_tag :skills, params[:skills], class: "form-control", placeholder: " Search by Job Skills ... Rails, Javascript, CSS ..."
+  %br
+  = text_field_tag :q, params[:q], class: "form-control", placeholder: "Search Indeed"
   .input-group
     .input-append
    
     %br
     %button.btn.btn-default{:type => "submit", :name => nil}
       %i.glyphicon.glyphicon-search
-
-
-/ = simple_form_for :search, html: { class: 'form-horizontal'}, :method => :get  do |f|
-
-/   = f.input :search, as: :search,:id="autocomplete" ,placeholder: "Search by title, position, skills, keywords"
-/   %br/
-/   = f.button :submit, :name => nil,  class: "btn btn-default"
-
-/ = link_to_function "Clear", "$('autocomplete').clear()"
-/   =f.input :search
-/   =f.submit "Search"

@@ -3,7 +3,7 @@
     %h3 Search for Jobs
     = render partial: 'jobs/search'
 .container
-  - if @jobs.blank?
+  - if @jobs.blank? && @indeed_jobs.results.empty?
     .row.col-md-10.col-md-offset-1
       .alert.alert-danger
         No Jobs found. Try your search again.
@@ -14,27 +14,41 @@
         %tr 
           %thead
             %th 
-              Posted On
+              Posted
               %i.glyphicon.glyphicon-calendar
             %th Job Title
             %th 
               Location
               %i.glyphicon.glyphicon-map-marker
-            %th 
-              Schedule
-              %i.glyphicon.glyphicon-time 
-       
+            %th Company  
         %tr
         - @jobs.newest_first.each do |job|
           %tr
-            %td= job.created_at
-            %td= link_to job.title, job
+            %td
+              = time_ago_in_words(job.created_at)
+              ago
+            %td= link_to job.title, job, :target => "_blank"
             %td= job.location
-            %td= job.job_type.name
+            %td= job.company
         - @indeed_jobs.results.each do |job|
           %tr
-            %td= job.date
-            %td= job.job_title
-            %td= job.location
-            %td Internship
-  %br
+            %td= job.formatted_relative_time
+            %td= link_to job.job_title, job.url, onclick: job.onmousedown, :target => "_blank"
+            %td= job.formatted_location
+            %td= job.company
+  .pagination
+    = link_to "Previous", url_for(page: params[:page].present? ? params[:page].to_i - 1 : 1)
+    = link_to "Next", url_for(page: params[:page].present? ? params[:page].to_i + 1 : 2)
+%br
+  %span#indeed_at.pull-right
+    %a{:href => "http://www.indeed.com/"} jobs
+    by
+    %a{:href => "http://www.indeed.com/", :title => "Job Search"}
+      %img{:alt => "Indeed job search", :src => "http://www.indeed.com/p/jobsearch.gif", :style => "border: 0;\r\nvertical-align: middle;"}/
+
+
+
+
+
+
+
