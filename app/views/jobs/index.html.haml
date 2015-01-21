@@ -9,7 +9,11 @@
         No Jobs found. Try your search again.
   - else
     .row.col-md-10.col-md-offset-1
-      %h3 Current Jobs
+      %h3 
+        Current Jobs
+        %ul.pager.pull-right.small
+          %li= link_to "Previous", url_for(page: params[:page].present? ? params[:page].to_i - 1 : 1)
+          %li= link_to "Next", url_for(page: params[:page].present? ? params[:page].to_i + 1 : 2)
       %table.table.table-striped.table-hover
         %tr 
           %thead
@@ -36,18 +40,13 @@
             %td= link_to job.job_title, job.url, onclick: job.onmousedown, :target => "_blank"
             %td= job.formatted_location
             %td= job.company
-  .pagination
-    = link_to "Previous", url_for(page: params[:page].present? ? params[:page].to_i - 1 : 1)
-    = link_to "Next", url_for(page: params[:page].present? ? params[:page].to_i + 1 : 2)
-%br
+      %br
+        = link_to "Post a Job", new_job_path, class: "btn btn-primary"
   %span#indeed_at.pull-right
     %a{:href => "http://www.indeed.com/"} jobs
     by
     %a{:href => "http://www.indeed.com/", :title => "Job Search"}
       %img{:alt => "Indeed job search", :src => "http://www.indeed.com/p/jobsearch.gif", :style => "border: 0;\r\nvertical-align: middle;"}/
-
-
-
 
 
 

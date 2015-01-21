@@ -1,12 +1,17 @@
 = form_tag jobs_path, :method => "get", class: 'form-horizontal', id: "search-form" do
-  = text_field_tag :title, params[:title],  class: "form-control", placeholder: "Search by Job Title ... Designer, Developer, CTO ..."
-  %br
-  = text_field_tag :skills, params[:skills], class: "form-control", placeholder: " Search by Job Skills ... Rails, Javascript, CSS ..."
-  %br
-  = text_field_tag :q, params[:q], class: "form-control", placeholder: "Search Indeed"
-  .input-group
-    .input-append
-   
-    %br
-    %button.btn.btn-default{:type => "submit", :name => nil}
-      %i.glyphicon.glyphicon-search
+  .panel.panel-default
+    .panel-body
+      = text_field_tag :title, params[:title],  class: "form-control", placeholder: "Search by Job Title ... Designer, Developer, CTO ..."
+      %br
+      = text_field_tag :skills, params[:skills], class: "form-control", placeholder: " Search by Job Skills ... Rails, Javascript, CSS ..."
+      %br
+      = text_field_tag :q, params[:q], class: "form-control", placeholder: "Search Indeed"
+      %hr/
+      .pull-right
+        = link_to "Clear","#", id: "clear_form"
+      .input-group
+        %button.btn.btn-primary{:type => "submit", :name => nil}
+          %i.glyphicon.glyphicon-search
+            Search
+        &nbsp;
+      

@@ -15,3 +15,10 @@
 //= require bootstrap
 //= require select2
 //= require_tree .
+
+$(document).ready(function(e){
+  $("#clear_form").on("click", function(e){
+    e.preventDefault();
+    $("form#search-form")[0].reset();
+  });
+});

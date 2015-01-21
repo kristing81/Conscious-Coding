@@ -1,12 +1,11 @@
-%nav.navbar-fixed-top{role: "navigation"}
-  .container
-    .navbar-header
-      %button.navbar-toggle{"data-target" => "#collapse", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Menu
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-    #collapse.collapse.navbar-collapse
+.navbar.navbar-default.navbar-fixed-top{role: "navigation"}
+  .navbar-header
+    %button.navbar-toggle{type: "button", "data-toggle" => "collapse", "data-target" => "#nav"}
+      %span.sr-only 
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+  #nav.collapse.navbar-collapse
       %ul.nav.navbar-nav.nav-pills
         %li.header= link_to "Conscious Coding", root_path
       %ul.nav.navbar-nav.nav-pills
