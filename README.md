@@ -1,28 +1,21 @@
-== README
+##Conscious Coding
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Job board for developers in non-profits.
 
-Things you may want to cover:
+Search for jobs by **Job Title** or **Job Skills**.
 
-* Ruby version
+Jobs are sourced from the Indeed API.
 
-* System dependencies
+View the live app [here](http://consciouscoding.herokuapp.com/).
 
-* Configuration
+Built using:
+- Rails 4
+- Flatly Bootswatch Theme
+- HAML
+- Omniauth-Linkedin
+- HTTParty
+- Simple Form
+- MongoDB/Mongoid
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+![alt text](/public/CC Home.png "CC Home")
+![alt text](/public/CC Feed.png "CC Feed ")
